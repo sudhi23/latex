@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,margin=1in]{geometry}
+
+\pagenumbering{gobble}
+
+\title{\textbf{Lab Program}\\
+\emph{Save file dialog box in C\#}}
+\author{\textbf{Sudhanshu Kumar}\\
+2017IEN43\\
+Department of Computer Science}
+
+\begin{document}
+	\maketitle\break
+	\begin{verbatim}
+	using System;
+	using System.Data;
+	using System.Drawing;
+	using System.Drawing.Imaging;
+	using System.Windows.Forms;
+	using System.IO;
+	
+	namespace saveFileDialog
+	{
+	public partial class Form1 : Form
+	{
+	public Form1()
+	{
+	InitializeComponent();
+	}
+	
+	private void button1_Click(object sender, EventArgs e)
+	{
+	SaveFileDialog saveFileDialog = new SaveFileDialog();
+	saveFileDialog.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+	saveFileDialog.Title = "Save an Image File";
+	saveFileDialog.RestoreDirectory = true;
+	saveFileDialog.ShowDialog();
+	
+	if(saveFileDialog.FileName != "")
+	{
+	FileStream fs = (FileStream)saveFileDialog.OpenFile();
+	switch (saveFileDialog.FilterIndex)
+	{
+	case 1:
+	this.button1.Image.Save(fs, ImageFormat.Jpeg);
+	break;
+	
+	case 2:
+	this.button1.Image.Save(fs, ImageFormat.Bmp);
+	break;
+	
+	case 3:
+	this.button1.Image.Save(fs, ImageFormat.Gif);
+	break;
+	}
+	fs.Close();
+	}
+	}
+	}
+	}
+	
+	
+	\end{verbatim}\break
+	\begin{center}
+		\textbf{Output}\\
+		\hfill\break\includegraphics[width=3.77in]{1.png}\\
+		\hfill\break\includegraphics[width=5.27in]{2.png}\\
+		\hfill\break\includegraphics[width=2.77in]{3.png}\\
+		\hfill\break\includegraphics[width=5.27in]{4.png}\\
+		\hfill\break\rule{6.27in}{1.2pt}\\
+		\hfill\break\textbf{\emph{Thanks, Stay Hydrated and Keep Breathing.}}
+	\end{center}
+\end{document}

@@ -335,6 +335,9 @@
 \newcommand*{\moderncvstyle}[2][]{%
   \RequirePackage[#1]{moderncvstyle#2}}
 
+\newcommand*{\moderncvcolor}[2][]{%
+  \RequirePackage[#1]{moderncvcolor#2}}
+
 % loads a header variant
 % usage: \moderncvhead[<optional head option>]{<header variant number>}
 \newcommand*{\moderncvhead}[2][]{%
